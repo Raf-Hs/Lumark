@@ -42,7 +42,7 @@
 
 ## Roadmap
 
-- [ ] Linebreaks inside of the editor (togglable or as a deafult behavior)
+- [x] Linebreaks inside of the editor (togglable or as a deafult behavior)
 - [ ] Mode selection (Edit, View, Split)
 - [ ] Multiple files selection
 - [ ] Dark mode
