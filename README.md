@@ -7,8 +7,11 @@
     <img src="https://img.shields.io/badge/platforms-Windows,%20Mac%20OS,%20Linux%20(comming%20soon)-green?style=flat-square" alt="Platforms">
     <img src="https://img.shields.io/github/license/AlbertArakelyan/lumark?style=flat-square" alt="License">
   </div>
+  <!-- <p>
+    Lightweight cross-platform Markdown note-taking app
+  </p> -->
   <p>
-     Lightweight cross-platform Markdown note-taking app
+    Blazing fast, local-first Markdown note-taking app, designed for those who want a minimal distraction-free writing and note taking experience.
   </p>
 </div>
 
@@ -18,10 +21,10 @@
 
 ## Features
 
-- Amazing: Local-first, cross-platform, no data collection, split editor
-- Elegant: Minimalist design, two-column layout, distraction-free
-- Efficient: Tauri based, better performance than Electron based apps
-- Simple: Lightweight, single purpose
+- **Amazing**: Local-first, cross-platform, no data collection, split editor
+- **Elegant**: Minimalist design, two-column layout, distraction-free
+- **Efficient**: Tauri based, better performance than Electron based apps
+- **Simple**: Lightweight, single purpose
 
 
 <!--
@@ -39,7 +42,13 @@
 
 ## Roadmap
 
-Coming soon 🤫😊
+- [ ] Linebreaks inside of the editor (togglable or as a deafult behavior)
+- [ ] Mode selection (Edit, View, Split)
+- [ ] Multiple files selection
+- [ ] Dark mode
+- [ ] Support Tab and Shift+Tab (for tabbing and back-tabbing)
+
+
 
 ## License
 
