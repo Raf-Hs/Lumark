@@ -47,6 +47,7 @@
 - [ ] Multiple files selection
 - [ ] Dark mode
 - [ ] Support Tab and Shift+Tab (for tabbing and back-tabbing)
+- [ ] Support `mermaid` diagrams
 
 
 
