@@ -27,6 +27,11 @@
   --secondary-800: #4b33b8;
   --secondary-900: #37258a;
 
+  /* ===== Ghost button ===== */
+  --ghost-button-bg: transparent;
+  --ghost-button-hover-bg: color-mix(in srgb, var(--primary) 10%, transparent);
+  --ghost-button-active-bg: color-mix(in srgb, var(--primary) 20%, transparent);
+
   /* semantic */
   --success: #18b47b;
   --warning: #f5a524;
