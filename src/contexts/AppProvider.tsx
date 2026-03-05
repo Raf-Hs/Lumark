@@ -1,15 +1,23 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
+import { EditorModeEnum } from '../types/editor/editorEnums.ts';
 
 interface IAppContext {
   content: string;
   setContent: Dispatch<SetStateAction<string>>;
+  editorMode: EditorModeEnum;
+  handleEditorModeChange: (mode: EditorModeEnum) => void;
 }
 
 export const AppContext = createContext<IAppContext>({} as IAppContext);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [content, setContent] = useState('');
+  const [editorMode, setEditorMode] = useState<EditorModeEnum>(EditorModeEnum.SPLIT);
+
+  const handleEditorModeChange = (mode: EditorModeEnum) => {
+    setEditorMode(mode);
+  };
 
   useEffect(() => {
     const loadContent = async () => {
@@ -43,6 +51,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const value: IAppContext = {
     content,
     setContent,
+    editorMode,
+    handleEditorModeChange,
   };
 
   return (

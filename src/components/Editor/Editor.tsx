@@ -10,14 +10,16 @@ import rehypeHighlight from 'rehype-highlight';
 import { githubLight } from '@fsegurai/codemirror-theme-github-light'; // When dark theme is set up change with @fsegurai/codemirror-theme-github-dark
 import 'highlight.js/styles/github.css';
 import 'github-markdown-css/github-markdown-light.css';
-import { useAppContext } from '../contexts/AppProvider.tsx';
+import { useAppContext } from '../../contexts/AppProvider.tsx';
+import EditorMode from './EditorMode.tsx';
+import { EditorModeEnum } from '../../types/editor/editorEnums.ts';
 
 // Try also react-simple-code-editor [https://www.npmjs.com/package/react-simple-code-editor]
 // inside a new Editor.tsx (Editor2.tsx) component and compare
 // Consider last published 2 years ago, meanwhile code mirror is actively being updated
 
 const Editor = () => {
-  const { content, setContent } = useAppContext();
+  const { content, setContent, editorMode } = useAppContext();
 
   const [isEditorContentSetInitially, setIsEditorContentSetInitially] = useState(false);
 
@@ -71,21 +73,24 @@ const Editor = () => {
   }, [content, isEditorContentSetInitially]);
 
   return (
-    <div className="flex items-start justify-between gap-2 p-2">
-      <div className="w-1/2">
-        <div id="editor-container"></div>
+    <>
+      <EditorMode />
+      <div className="flex items-start justify-between gap-2 p-2">
+        <div className={`w-1/2 ${editorMode === EditorModeEnum.PREVIEW ? 'hidden' : ''} ${editorMode === EditorModeEnum.EDIT ? '!w-full' : ''}`}>
+          <div id="editor-container"></div>
+        </div>
+        <div className={`w-1/2 ${editorMode === EditorModeEnum.EDIT ? 'hidden' : ''} ${editorMode === EditorModeEnum.PREVIEW ? '!w-full' : ''}`}>
+          <article className="markdown-body">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw, rehypeHighlight]}
+            >
+              {content}
+            </ReactMarkdown>
+          </article>
+        </div>
       </div>
-      <div className="w-1/2">
-        <article className="markdown-body">
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw, rehypeHighlight]}
-          >
-            {content}
-          </ReactMarkdown>
-        </article>
-      </div>
-    </div>
+    </>
   );
 };
 
