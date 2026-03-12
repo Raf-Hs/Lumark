@@ -29,8 +29,12 @@
 
   /* ===== Ghost button ===== */
   --ghost-button-bg: transparent;
-  --ghost-button-hover-bg: color-mix(in srgb, var(--primary) 10%, transparent);
-  --ghost-button-active-bg: color-mix(in srgb, var(--primary) 20%, transparent);
+  --ghost-button-hover-primary-bg: color-mix(in srgb, var(--primary) 10%, transparent);
+  --ghost-button-active-primary-bg: color-mix(in srgb, var(--primary) 20%, transparent);
+  --ghost-button-hover-secondary-bg: color-mix(in srgb, var(--secondary) 10%, transparent);
+  --ghost-button-active-secondary-bg: color-mix(in srgb, var(--secondary) 20%, transparent);
+  --ghost-button-hover-gray-bg: color-mix(in srgb, var(--muted-light) 10%, transparent);
+  --ghost-button-active-gray-bg: color-mix(in srgb, var(--muted-light) 20%, transparent);
 
   /* semantic */
   --success: #18b47b;
