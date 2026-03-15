@@ -48,6 +48,7 @@
 - [ ] Support Key Shortcuts (Ctrl+B, Ctrl+I, Ctrl+U, etc.)
 - [ ] Multiple files selection
 - [ ] Dark mode
+- [ ] Export to PDF
 - [ ] Support `mermaid` diagrams
 
 
