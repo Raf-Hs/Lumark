@@ -33,18 +33,14 @@
   --ghost-button-active-primary-bg: color-mix(in srgb, var(--primary) 20%, transparent);
   --ghost-button-hover-secondary-bg: color-mix(in srgb, var(--secondary) 10%, transparent);
   --ghost-button-active-secondary-bg: color-mix(in srgb, var(--secondary) 20%, transparent);
-  /*--ghost-button-hover-gray-bg: color-mix(in srgb, var(--muted-light) 10%, transparent);*/
-  /*--ghost-button-active-gray-bg: color-mix(in srgb, var(--muted-light) 20%, transparent);*/
-
-  /*Cubic's suggestion, switch to these colors instead of var(--muted-light) in the future*/
   --ghost-button-hover-gray-bg: color-mix(in srgb, var(--muted-text) 10%, transparent);
   --ghost-button-active-gray-bg: color-mix(in srgb, var(--muted-text) 20%, transparent);
 
   /* semantic */
-  --success: #18b47b;
-  --warning: #f5a524;
-  --error: #e5484d;
-  --info: #3aa1ff;
+  --success: #18b47b; /* TODO: add shades for these colors like primary/secondary */
+  --warning: #f5a524; /* TODO: add shades for these colors like primary/secondary */
+  --danger: #e5484d; /* TODO: add shades for these colors like primary/secondary */
+  --info: #3aa1ff; /* TODO: add shades for these colors like primary/secondary */
 
   /* neutrals */
   --text-light: #0f172a;
@@ -73,9 +69,12 @@
   --secondary-hover: var(--secondary-700);
   --secondary-active: var(--secondary-800);
 
-  --error-bg: color-mix(in srgb, var(--error) 12%, white);
+  /* TODO: add hover and active colors for danger, success, warning, info */
+
+  --danger-bg: color-mix(in srgb, var(--danger) 12%, white);
   --success-bg: color-mix(in srgb, var(--success) 12%, white);
   --warning-bg: color-mix(in srgb, var(--warning) 12%, white);
+  /* TODO: add info-bg */
 }
 
 /* TODO: support in the future */
@@ -93,7 +92,7 @@
     --secondary-hover: var(--secondary-400);
     --secondary-active: var(--secondary-300);
 
-    --error-bg: color-mix(in srgb, var(--error) 20%, black);
+    --danger-bg: color-mix(in srgb, var(--danger) 20%, black);
     --success-bg: color-mix(in srgb, var(--success) 20%, black);
     --warning-bg: color-mix(in srgb, var(--warning) 20%, black);
   }

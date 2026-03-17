@@ -48,11 +48,14 @@ module.exports = {
         surface: 'var(--surface)',
         'muted-text': 'var(--muted-text)',
         'border-color': 'var(--border-color)',
-        'error-bg': 'var(--error-bg)',
+
+        'danger-bg': 'var(--danger-bg)',
         'success-bg': 'var(--success-bg)',
         'warning-bg': 'var(--warning-bg)',
+        'info-bg': 'var(--info-bg)', // TODO add the color to base.css
+
         success: 'var(--success)',
-        error: 'var(--error)',
+        danger: 'var(--danger)',
         warning: 'var(--warning)',
         info: 'var(--info)',
       },

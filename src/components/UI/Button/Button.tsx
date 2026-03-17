@@ -61,7 +61,7 @@ const Button: FC<IButtonProps> = ({
         {icon ? (
           <>
             {iconPosition === 'left' && icon}
-            <div className={`${iconPosition === 'right' ? 'ml-2' : 'mr-2'} ${buttonContentClassName}`}>
+            <div className={`${iconPosition === 'right' ? 'mr-2' : 'ml-2'} ${buttonContentClassName}`}>
               {children}
             </div>
             {iconPosition === 'right' && icon}
