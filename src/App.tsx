@@ -1,7 +1,7 @@
 import Editor from './components/Editor/Editor.tsx';
 
 const App = () => (
-  <div>
+  <div className="bg-surface text-text-color">
     <Editor />
   </div>
 );

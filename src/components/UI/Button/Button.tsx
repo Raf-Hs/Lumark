@@ -17,11 +17,11 @@ const Button: FC<IButtonProps> = ({
 }) => {
   const buttonSize = useMemo(() => {
     const sizeMapping: Record<ButtonSizeType, string> = {
-      xs: 'px-2 py-1 text-sm',
-      sm: 'px-3 py-2 text-base',
-      md: 'px-4 py-3 text-lg',
-      lg: 'px-5 py-4 text-xl',
-      xl: 'px-6 py-5 text-2xl',
+      xs: 'px-2 py-0.5 text-sm',
+      sm: 'px-3 py-1 text-base',
+      md: 'px-4 py-1.5 text-lg',
+      lg: 'px-5 py-2 text-xl',
+      xl: 'px-6 py-3 text-2xl',
     };
 
     return sizeMapping[size] || sizeMapping.md;
@@ -53,7 +53,7 @@ const Button: FC<IButtonProps> = ({
 
   return (
     <button
-      className={`outline-none ${buttonSize} ${buttonColor} ${buttonRounded} ${isLoading ? 'cursor-not-allowed opacity-50' : ''} ${buttonClassName}`}
+      className={`outline-none hover:cursor-pointer transition ${buttonSize} ${buttonColor} ${buttonRounded} ${isLoading ? 'cursor-not-allowed opacity-50' : ''} ${buttonClassName}`}
       disabled={disabled || isLoading}
       {...rest}
     >
