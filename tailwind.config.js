@@ -43,6 +43,7 @@ module.exports = {
           'hover-gray-bg': 'var(--ghost-button-hover-gray-bg)',
           'active-gray-bg': 'var(--ghost-button-active-gray-bg)',
         },
+        
         'text-color': 'var(--text-color)',
         surface: 'var(--surface)',
         'muted-text': 'var(--muted-text)',
