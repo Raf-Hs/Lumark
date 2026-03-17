@@ -9,9 +9,9 @@ const Button: FC<IButtonProps> = ({
   icon,
   iconPosition = 'left',
   isLoading,
-  buttonClassName = '',
   buttonContainerClassName = '',
   buttonContentClassName = '',
+  className = '',
   disabled,
   ...rest
 }) => {
@@ -53,7 +53,7 @@ const Button: FC<IButtonProps> = ({
 
   return (
     <button
-      className={`outline-none hover:cursor-pointer transition ${buttonSize} ${buttonColor} ${buttonRounded} ${isLoading ? 'cursor-not-allowed opacity-50' : ''} ${buttonClassName}`}
+      className={`outline-none hover:cursor-pointer transition ${buttonSize} ${buttonColor} ${buttonRounded} ${isLoading ? 'cursor-not-allowed opacity-50' : ''} ${className}`}
       disabled={disabled || isLoading}
       {...rest}
     >

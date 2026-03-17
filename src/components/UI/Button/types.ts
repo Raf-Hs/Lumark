@@ -12,7 +12,6 @@ export interface IButtonProps extends PropsWithChildren, ButtonHTMLAttributes<HT
   icon?: ReactNode;
   iconPosition?: ButtonIconPositionType;
   isLoading?: boolean;
-  buttonClassName?: string;
   buttonContainerClassName?: string;
   buttonContentClassName?: string;
 }
