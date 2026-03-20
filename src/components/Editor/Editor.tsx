@@ -9,7 +9,8 @@ import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
 import { githubLight } from '@fsegurai/codemirror-theme-github-light'; // When dark theme is set up change with @fsegurai/codemirror-theme-github-dark
 import 'highlight.js/styles/github.css';
-import 'github-markdown-css/github-markdown-light.css';
+import 'github-markdown-css/github-markdown-light.css'; // TODO: remove light theme and leave ordinary one, for supporting both themes.
+// Reference: https://github.com/sindresorhus/github-markdown-css
 import { useAppContext } from '../../contexts/AppProvider.tsx';
 import EditorMode from './EditorMode.tsx';
 import { EditorModeEnum } from '../../types/editor/editorEnums.ts';
