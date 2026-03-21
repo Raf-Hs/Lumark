@@ -5,7 +5,7 @@ const Input: FC<IInputProps> = ({
   label,
   wrapperClassName = '',
   labelClassName = '',
-  size = 'sm',
+  inputElSize = 'sm',
   rounded = 'default',
   icon,
   iconPosition = 'right',
@@ -24,7 +24,7 @@ const Input: FC<IInputProps> = ({
         xl: `${iconPosition === 'left' ? 'pl-8 pr-6' : 'pl-6 pr-8'} py-3 text-xl`,
       };
 
-      return iconSizeMapping[size] || iconSizeMapping.md;
+      return iconSizeMapping[inputElSize] || iconSizeMapping.md;
     }
 
     const sizeMapping: Record<InputSizeType, string> = {
@@ -35,8 +35,8 @@ const Input: FC<IInputProps> = ({
       xl: 'px-6 py-3 text-xl', // not stable, need to adjust padding to accommodate icon
     };
 
-    return sizeMapping[size] || sizeMapping.md;
-  }, [size]);
+    return sizeMapping[inputElSize] || sizeMapping.md;
+  }, [inputElSize]);
 
   const inputRounded = useMemo(() => {
     const roundedMapping: Record<InputRoundedType, string> = {

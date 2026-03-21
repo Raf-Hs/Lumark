@@ -7,7 +7,7 @@ export type InputIconPositionType = 'left' | 'right';
 export interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   wrapperClassName?: string;
   labelClassName?: string;
-  size?: InputSizeType;
+  inputElSize?: InputSizeType;
   rounded?: InputRoundedType;
   icon?: ReactNode;
   iconPosition?: InputIconPositionType;
