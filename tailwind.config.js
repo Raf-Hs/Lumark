@@ -52,7 +52,7 @@ module.exports = {
         'danger-bg': 'var(--danger-bg)',
         'success-bg': 'var(--success-bg)',
         'warning-bg': 'var(--warning-bg)',
-        'info-bg': 'var(--info-bg)', // TODO add the color to base.css
+        'info-bg': 'var(--info-bg)',
 
         success: 'var(--success)',
         danger: 'var(--danger)',

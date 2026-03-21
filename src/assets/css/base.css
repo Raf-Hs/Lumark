@@ -53,7 +53,7 @@
   --muted-dark: #9ca3af;
 
   --border-light: #d1d5db; /* ex color: #e5e7eb */
-  --border-dark: #1f2937;
+  --border-dark: #374151; /* ex color: #1f2937 */
 }
 
 /* ===== Light ===== */
@@ -69,12 +69,12 @@
   --secondary-hover: var(--secondary-700);
   --secondary-active: var(--secondary-800);
 
-  /* TODO: add hover and active colors for danger, success, warning, info */
+  /* TODO: add hover and active colors for danger, success, warning, info (same for dark theme) */
 
   --danger-bg: color-mix(in srgb, var(--danger) 12%, white);
   --success-bg: color-mix(in srgb, var(--success) 12%, white);
   --warning-bg: color-mix(in srgb, var(--warning) 12%, white);
-  /* TODO: add info-bg */
+  --info-bg: color-mix(in srgb, var(--info) 12%, white);
 }
 
 /* TODO: support in the future */
@@ -95,5 +95,6 @@
     --danger-bg: color-mix(in srgb, var(--danger) 20%, black);
     --success-bg: color-mix(in srgb, var(--success) 20%, black);
     --warning-bg: color-mix(in srgb, var(--warning) 20%, black);
+    --info-bg: color-mix(in srgb, var(--info) 20%, black);
   }
 } */
