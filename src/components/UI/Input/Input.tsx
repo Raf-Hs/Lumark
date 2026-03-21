@@ -61,6 +61,7 @@ const Input: FC<IInputProps> = ({
 
   return (
     <div className={`w-full flex items-center relative ${wrapperClassName}`}>
+      {/* TODO: Support label */}
       <input
         className={`outline-none border border-border-color hover:ring-3 focus:ring-3 transition w-full ${inputRingAndBorderColor} ${inputSize} ${inputRounded} ${className}`}
         {...props}
@@ -69,6 +70,9 @@ const Input: FC<IInputProps> = ({
         <div className={`absolute top-1/2 transform -translate-y-1/2 ${iconPosition === 'left' ? 'left-2' : 'right-2'}`}>
           {icon}
         </div>
+      )}
+      {error && (
+        <p className="text-danger text-sm absolute bottom-full mb-1">{error}</p>
       )}
     </div>
   );
