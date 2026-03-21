@@ -53,7 +53,7 @@ const Button: FC<IButtonProps> = ({
 
   return (
     <button
-      className={`outline-none hover:cursor-pointer transition ${buttonSize} ${buttonColor} ${buttonRounded} ${isLoading ? 'cursor-not-allowed opacity-50' : ''} ${className}`}
+      className={`outline-none hover:cursor-pointer transition ${buttonSize} ${buttonColor} ${buttonRounded} ${disabled || isLoading ? '!cursor-not-allowed opacity-50' : ''} ${className}`}
       disabled={disabled || isLoading}
       {...rest}
     >
