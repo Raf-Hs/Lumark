@@ -49,14 +49,14 @@ const Input: FC<IInputProps> = ({
 
   const inputRingAndBorderColor = useMemo(() => {
     if (error) {
-      return 'focus:ring-danger/20 focus:ring-danger border-danger hover:ring-danger/20';
+      return 'focus:ring-danger/20 border-danger hover:ring-danger/20';
     }
 
     // if (isDirty) {
     //   return 'focus:ring-success/20 focus:ring-success focus:border-success hover:ring-success/20';
     // }
 
-    return 'focus:ring-primary/20 focus:ring-primary focus:border-primary hover:ring-primary/20';
+    return 'focus:ring-primary/20 focus:border-primary hover:ring-primary/20';
   }, [error]);
 
   return (
