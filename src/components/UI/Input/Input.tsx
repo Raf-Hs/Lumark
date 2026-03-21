@@ -72,7 +72,7 @@ const Input: FC<IInputProps> = ({
         </div>
       )}
       {error && (
-        <p className="text-danger text-sm absolute top-full mb-1">{error}</p>
+        <p className="text-danger text-sm absolute top-full mt-1">{error}</p>
       )}
     </div>
   );
