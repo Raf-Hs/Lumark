@@ -47,6 +47,27 @@ fn load_content(app: AppHandle) -> Result<String, String> {
     }
 }
 
+#[tauri::command]
+fn add_file(app: AppHandle, file_name: String) -> Result<(), String> {
+    use std::fs;
+
+    let app_dir = app
+        .path()
+        .app_data_dir()
+        .expect("failed to retrieve app data dir");
+
+    // Ensure the directory exists
+    fs::create_dir_all(&app_dir)
+        .map_err(|e| format!("Failed to create app data dir: {}", e))?;
+
+    let file_path = app_dir.join(file_name + ".md");
+
+    fs::write(&file_path, "")
+        .map_err(|e| format!("Failed to create file: {}", e))?;
+
+    Ok(())
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -54,7 +75,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             greet,
             save_content,
-            load_content
+            load_content,
+            add_file
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
