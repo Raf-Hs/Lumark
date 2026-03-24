@@ -1,8 +1,11 @@
 import Editor from './components/Editor/Editor.tsx';
+import MainLayout from './components/Layouts/MainLayout/MainLayout.tsx';
 
 const App = () => (
   <div className="bg-surface text-text-color">
-    <Editor />
+    <MainLayout>
+      <Editor />
+    </MainLayout>
   </div>
 );
 
