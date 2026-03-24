@@ -37,48 +37,50 @@ const FilesSearch = () => {
   };
 
   return (
-    isAddingFile ? (
-      <div className="flex flex-col items-start gap-2">
-        <Input
-          key="file-name-input"
-          placeholder="File name"
-          rounded="rounded"
-          value={fileName}
-          onChange={handleFileNameChange}
-        />
-        <div className="flex items-center gap-1 w-full justify-end">
-          <Button
-            size="sm"
-            variant="success"
-            onClick={handleAddFile}
-            disabled={!fileName.trim()}
-          >
+    <div>
+      {isAddingFile ? (
+        <div className="flex flex-col items-start gap-2">
+          <Input
+            key="file-name-input"
+            placeholder="File name"
+            rounded="rounded"
+            value={fileName}
+            onChange={handleFileNameChange}
+          />
+          <div className="flex items-center gap-1 w-full justify-end">
+            <Button
+              size="sm"
+              variant="success"
+              onClick={handleAddFile}
+              disabled={!fileName.trim()}
+            >
             Add
-          </Button>
-          <Button
-            size="sm"
-            variant="danger"
-            onClick={handleCancelAddFile}
-          >
+            </Button>
+            <Button
+              size="sm"
+              variant="danger"
+              onClick={handleCancelAddFile}
+            >
             Cancel
-          </Button>
+            </Button>
+          </div>
         </div>
-      </div>
-    ) : (
-      <div className="flex items-center gap-1">
-        <Input
-          key="file-search-input"
-          placeholder="Search"
-          rounded="rounded"
-        />
-        <Button
-          variant="ghost"
-          size="square-icon"
-          icon={<SquarePenIcon />}
-          onClick={handleAddFileClick}
-        />
-      </div>
-    )
+      ) : (
+        <div className="flex items-center gap-1">
+          <Input
+            key="file-search-input"
+            placeholder="Search"
+            rounded="rounded"
+          />
+          <Button
+            variant="ghost"
+            size="square-icon"
+            icon={<SquarePenIcon />}
+            onClick={handleAddFileClick}
+          />
+        </div>
+      )}
+    </div>
   );
 };
 

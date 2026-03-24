@@ -68,6 +68,33 @@ fn add_file(app: AppHandle, file_name: String) -> Result<(), String> {
     Ok(())
 }
 
+#[tauri::command]
+fn load_files(app: AppHandle) -> Result<Vec<String>, String> {
+    use std::fs;
+
+    let app_dir = app
+        .path()
+        .app_data_dir()
+        .map_err(|e| format!("Failed to get app data dir: {}", e))?;
+
+    if !app_dir.exists() {
+        return Ok(vec![]); // Return empty list if directory doesn't exist
+    }
+
+    let mut files = Vec::new();
+    for entry in fs::read_dir(app_dir).map_err(|e| format!("Failed to read app data dir: {}", e))? {
+        let entry = entry.map_err(|e| format!("Failed to read directory entry: {}", e))?;
+        let path = entry.path();
+        if path.is_file() {
+            if let Some(file_name) = path.file_stem().and_then(|s| s.to_str()) {
+                files.push(file_name.to_string());
+            }
+        }
+    }
+
+    Ok(files)
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -76,7 +103,8 @@ pub fn run() {
             greet,
             save_content,
             load_content,
-            add_file
+            add_file,
+            load_files
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
