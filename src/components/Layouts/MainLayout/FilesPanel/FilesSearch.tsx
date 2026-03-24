@@ -37,7 +37,7 @@ const FilesSearch = () => {
   };
 
   return (
-    <div>
+    <>
       {isAddingFile ? (
         <div className="flex flex-col items-start gap-2">
           <Input
@@ -80,7 +80,7 @@ const FilesSearch = () => {
           />
         </div>
       )}
-    </div>
+    </>
   );
 };
 
