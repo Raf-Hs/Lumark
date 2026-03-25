@@ -11,6 +11,7 @@ import { githubLight } from '@fsegurai/codemirror-theme-github-light'; // When d
 import 'highlight.js/styles/github.css';
 import 'github-markdown-css/github-markdown-light.css'; // TODO: remove light theme and leave ordinary one, for supporting both themes.
 // Reference: https://github.com/sindresorhus/github-markdown-css
+
 import { useAppContext } from '../../contexts/AppProvider.tsx';
 import EditorMode from './EditorMode.tsx';
 import { EditorModeEnum } from '../../types/editor/editorEnums.ts';
