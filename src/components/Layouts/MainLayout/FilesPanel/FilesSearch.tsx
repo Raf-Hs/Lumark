@@ -3,8 +3,11 @@ import { invoke } from '@tauri-apps/api/core';
 import { SquarePenIcon } from 'lucide-react';
 import Button from '../../../UI/Button/Button';
 import Input from '../../../UI/Input/Input';
+import { useAppContext } from '../../../../contexts/AppProvider';
 
 const FilesSearch = () => {
+  const { fetchFiles } = useAppContext();
+
   const [isAddingFile, setIsAddingFile] = useState(false);
   const [fileName, setFileName] = useState('');
 
@@ -24,6 +27,7 @@ const FilesSearch = () => {
       }
 
       await invoke('add_file', { fileName: fileName.trim() });
+      await fetchFiles();
 
       setIsAddingFile(false);
       setFileName('');

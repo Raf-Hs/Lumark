@@ -11,6 +11,7 @@ interface IAppContext {
   files: IFileInfo[];
   handleFileSelect: (fileName: string) => void;
   selectedFile: string | null;
+  fetchFiles: () => Promise<void>;
 }
 
 export const AppContext = createContext<IAppContext>({} as IAppContext);
@@ -29,16 +30,16 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setSelectedFile(fileName);
   };
 
-  useEffect(() => {
-    const fetchFiles = async () => {
-      try {
-        const loadedFiles = await invoke<IFileInfo[]>('load_files');
-        setFiles(loadedFiles);
-      } catch (error) {
-        console.error('Error fetching files:', error);
-      }
-    };
+  const fetchFiles = async () => {
+    try {
+      const loadedFiles = await invoke<IFileInfo[]>('load_files');
+      setFiles(loadedFiles);
+    } catch (error) {
+      console.error('Error fetching files:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchFiles();
   }, []);
 
@@ -113,6 +114,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     files,
     handleFileSelect,
     selectedFile,
+    fetchFiles,
   };
 
   return (
