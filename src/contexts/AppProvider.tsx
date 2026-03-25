@@ -9,6 +9,7 @@ interface IAppContext {
   editorMode: EditorModeEnum;
   handleEditorModeChange: (mode: EditorModeEnum) => void;
   files: IFileInfo[];
+  handleFileSelect: (fileName: string) => void;
 }
 
 export const AppContext = createContext<IAppContext>({} as IAppContext);
@@ -17,9 +18,14 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [content, setContent] = useState('');
   const [editorMode, setEditorMode] = useState<EditorModeEnum>(EditorModeEnum.SPLIT);
   const [files, setFiles] = useState<IFileInfo[]>([]);
+  const [selectedFile, setSelectedFile] = useState<string | null>(null);
 
   const handleEditorModeChange = (mode: EditorModeEnum) => {
     setEditorMode(mode);
+  };
+
+  const handleFileSelect = (fileName: string) => {
+    setSelectedFile(fileName);
   };
 
   useEffect(() => {
@@ -36,33 +42,67 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    const loadContent = async () => {
-      try {
-        const savedContent = await invoke<string>('load_content');
-        setContent(savedContent);
-      } catch (error) {
-        console.error('Failed to load content:', error);
-        setContent(''); // Default to empty string on error
+    const fetchFileContent = async () => {
+      if (selectedFile) {
+        try {
+          const fileContent = await invoke<string>('load_content_by_name', { file_name: selectedFile });
+          setContent(fileContent);
+        } catch (error) {
+          console.error('Error fetching file content:', error);
+          setContent(''); // Default to empty string on error
+        }
       }
     };
 
-    loadContent();
-  }, []);
+    fetchFileContent();
+  }, [selectedFile]);
 
-  // Auto-save content when it changes
   useEffect(() => {
     const saveContent = async () => {
-      try {
-        await invoke('save_content', { content });
-      } catch (error) {
-        console.error('Failed to save content:', error);
+      if (selectedFile) {
+        try {
+          await invoke('save_content_by_name', { file_name: selectedFile, content });
+        } catch (error) {
+          console.error('Failed to save content:', error);
+        }
+      } else {
+        console.warn('No file selected. Content not saved.');
       }
-    };
 
+    };
     // Debounce save to avoid too frequent writes
     const timeoutId = setTimeout(saveContent, 500);
     return () => clearTimeout(timeoutId);
-  }, [content]);
+  }, [selectedFile, content]);
+
+  // useEffect(() => {
+  //   const loadContent = async () => {
+  //     try {
+  //       const savedContent = await invoke<string>('load_content');
+  //       setContent(savedContent);
+  //     } catch (error) {
+  //       console.error('Failed to load content:', error);
+  //       setContent(''); // Default to empty string on error
+  //     }
+  //   };
+
+  //   loadContent();
+  // }, []);
+
+  // Auto-save content when it changes
+  // useEffect(() => {
+  //   const saveContent = async () => {
+  //     try {
+  //       await invoke('save_content', { content });
+  //     } catch (error) {
+  //       console.error('Failed to save content:', error);
+  //     }
+  //   };
+
+  //   // Debounce save to avoid too frequent writes
+  //   const timeoutId = setTimeout(saveContent, 500);
+  //   return () => clearTimeout(timeoutId);
+  // }, [content]);
 
   const value: IAppContext = {
     content,
@@ -70,6 +110,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     editorMode,
     handleEditorModeChange,
     files,
+    handleFileSelect,
   };
 
   return (

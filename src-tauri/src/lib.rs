@@ -74,6 +74,27 @@ fn load_content_by_name(app: AppHandle, file_name: String) -> Result<String, Str
 }
 
 #[tauri::command]
+fn save_content_by_name(app: AppHandle, file_name: String, content: String) -> Result<(), String> {
+    use std::fs;
+
+    let app_dir = app
+        .path()
+        .app_data_dir()
+        .expect("failed to retrieve app data dir");
+
+    // Ensure the directory exists
+    fs::create_dir_all(&app_dir)
+        .map_err(|e| format!("Failed to create app data dir: {}", e))?;
+
+    let file_path = app_dir.join(file_name + ".md");
+
+    fs::write(&file_path, content)
+        .map_err(|e| format!("Failed to write content file: {}", e))?;
+
+    Ok(())
+}
+
+#[tauri::command]
 fn add_file(app: AppHandle, file_name: String) -> Result<(), String> {
     use std::fs;
 
@@ -130,6 +151,8 @@ fn load_files(app: AppHandle) -> Result<Vec<FileInfo>, String> {
         }
     }
 
+    files.reverse();
+
     Ok(files)
 }
 
@@ -144,6 +167,7 @@ pub fn run() {
             add_file,
             load_files,
             load_content_by_name,
+            save_content_by_name
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
