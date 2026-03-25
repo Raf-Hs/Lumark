@@ -1,12 +1,14 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from 'react';
 import { invoke } from '@tauri-apps/api/core';
 import { EditorModeEnum } from '../types/editor/editorEnums.ts';
+import { IFileInfo } from '../types/file/fileTypes.ts';
 
 interface IAppContext {
   content: string;
   setContent: Dispatch<SetStateAction<string>>;
   editorMode: EditorModeEnum;
   handleEditorModeChange: (mode: EditorModeEnum) => void;
+  files: IFileInfo[];
 }
 
 export const AppContext = createContext<IAppContext>({} as IAppContext);
@@ -14,10 +16,24 @@ export const AppContext = createContext<IAppContext>({} as IAppContext);
 export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [content, setContent] = useState('');
   const [editorMode, setEditorMode] = useState<EditorModeEnum>(EditorModeEnum.SPLIT);
+  const [files, setFiles] = useState<IFileInfo[]>([]);
 
   const handleEditorModeChange = (mode: EditorModeEnum) => {
     setEditorMode(mode);
   };
+
+  useEffect(() => {
+    const fetchFiles = async () => {
+      try {
+        const loadedFiles = await invoke<IFileInfo[]>('load_files');
+        setFiles(loadedFiles);
+      } catch (error) {
+        console.error('Error fetching files:', error);
+      }
+    };
+
+    fetchFiles();
+  }, []);
 
   useEffect(() => {
     const loadContent = async () => {
@@ -53,6 +69,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     setContent,
     editorMode,
     handleEditorModeChange,
+    files,
   };
 
   return (

@@ -1,5 +1,11 @@
 use tauri::{AppHandle, Manager};
 
+#[derive(serde::Serialize)]
+struct FileInfo {
+    file_name: String,
+    date_created: String,
+}
+
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -48,6 +54,26 @@ fn load_content(app: AppHandle) -> Result<String, String> {
 }
 
 #[tauri::command]
+fn load_content_by_name(app: AppHandle, file_name: String) -> Result<String, String> {
+    use std::fs;
+
+    let app_dir = app
+        .path()
+        .app_data_dir()
+        .map_err(|e| format!("Failed to get app data dir: {}", e))?;
+
+    let file_path = app_dir.join(file_name + ".md");
+
+    if file_path.exists() {
+        let content = fs::read_to_string(&file_path)
+            .map_err(|e| format!("Failed to read content file: {}", e))?;
+        Ok(content)
+    } else {
+        Ok(String::new()) // Return empty string if file doesn't exist
+    }
+}
+
+#[tauri::command]
 fn add_file(app: AppHandle, file_name: String) -> Result<(), String> {
     use std::fs;
 
@@ -69,7 +95,7 @@ fn add_file(app: AppHandle, file_name: String) -> Result<(), String> {
 }
 
 #[tauri::command]
-fn load_files(app: AppHandle) -> Result<Vec<String>, String> {
+fn load_files(app: AppHandle) -> Result<Vec<FileInfo>, String> {
     use std::fs;
 
     let app_dir = app
@@ -78,7 +104,7 @@ fn load_files(app: AppHandle) -> Result<Vec<String>, String> {
         .map_err(|e| format!("Failed to get app data dir: {}", e))?;
 
     if !app_dir.exists() {
-        return Ok(vec![]); // Return empty list if directory doesn't exist
+        return Ok(vec![]);
     }
 
     let mut files = Vec::new();
@@ -87,7 +113,19 @@ fn load_files(app: AppHandle) -> Result<Vec<String>, String> {
         let path = entry.path();
         if path.is_file() {
             if let Some(file_name) = path.file_stem().and_then(|s| s.to_str()) {
-                files.push(file_name.to_string());
+                let metadata = fs::metadata(&path)
+                    .map_err(|e| format!("Failed to get file metadata: {}", e))?;
+                let date_created = metadata
+                    .created()
+                    .ok()
+                    .and_then(|t| t.duration_since(std::time::UNIX_EPOCH).ok())
+                    .map(|d| d.as_secs().to_string())
+                    .unwrap_or_default();
+
+                files.push(FileInfo {
+                    file_name: file_name.to_string(),
+                    date_created,
+                });
             }
         }
     }
@@ -104,7 +142,8 @@ pub fn run() {
             save_content,
             load_content,
             add_file,
-            load_files
+            load_files,
+            load_content_by_name,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
