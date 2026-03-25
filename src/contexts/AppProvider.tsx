@@ -10,6 +10,7 @@ interface IAppContext {
   handleEditorModeChange: (mode: EditorModeEnum) => void;
   files: IFileInfo[];
   handleFileSelect: (fileName: string) => void;
+  selectedFile: string | null;
 }
 
 export const AppContext = createContext<IAppContext>({} as IAppContext);
@@ -111,6 +112,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     handleEditorModeChange,
     files,
     handleFileSelect,
+    selectedFile,
   };
 
   return (

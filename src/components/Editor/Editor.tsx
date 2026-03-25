@@ -20,7 +20,7 @@ import { EditorModeEnum } from '../../types/editor/editorEnums.ts';
 // Consider last published 2 years ago, meanwhile code mirror is actively being updated
 
 const Editor = () => {
-  const { content, setContent, editorMode } = useAppContext();
+  const { content, setContent, editorMode, selectedFile } = useAppContext();
 
   const [isEditorContentSetInitially, setIsEditorContentSetInitially] = useState(false);
 
@@ -60,7 +60,7 @@ const Editor = () => {
   }, []);
 
   useEffect(() => {
-    if (editorRef.current && content && !isEditorContentSetInitially) {
+    if (editorRef.current && content !== editorRef.current.state.doc.toString() && !isEditorContentSetInitially) {
       editorRef.current.dispatch({
         changes: {
           from: 0,
@@ -72,6 +72,12 @@ const Editor = () => {
       setIsEditorContentSetInitially(true);
     }
   }, [content, isEditorContentSetInitially]);
+
+  useEffect(() => {
+    console.log('selectedFile', selectedFile);
+
+    setIsEditorContentSetInitially(false);
+  }, [selectedFile]);
 
   return (
     <>
