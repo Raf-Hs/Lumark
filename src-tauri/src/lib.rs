@@ -151,8 +151,6 @@ fn load_files(app: AppHandle) -> Result<Vec<FileInfo>, String> {
         }
     }
 
-    files.reverse();
-
     Ok(files)
 }
 

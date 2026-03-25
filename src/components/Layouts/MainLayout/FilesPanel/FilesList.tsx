@@ -17,7 +17,7 @@ const FilesList = () => {
       >
         <h3 className="font-medium">{file.file_name}</h3>
         <p className="text-sm text-muted-text">
-          Created: {new Date(Number(file.date_created)).toLocaleDateString()}
+          Created: <span>{new Date(Number(file.date_created) * 1000).toLocaleDateString()}</span>
         </p>
       </div>
     ))
