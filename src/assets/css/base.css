@@ -36,6 +36,16 @@
   --ghost-button-hover-gray-bg: color-mix(in srgb, var(--muted-text) 10%, transparent);
   --ghost-button-active-gray-bg: color-mix(in srgb, var(--muted-text) 20%, transparent);
 
+  /* ===== Gray bg colors ===== */
+  --gray-bg-light: #f9fafb;
+  --gray-bg-light-hover: #f3f4f6;
+  --gray-bg-light-active: #e5e7eb;
+
+  --gray-bg-dark: #1f2937;
+  --gray-bg-dark-hover: #2d3748;
+  --gray-bg-dark-active: #4a5568;
+
+
   /* semantic */
   --success: #18b47b; /* TODO: add shades for these colors like primary/secondary */
   --warning: #f5a524; /* TODO: add shades for these colors like primary/secondary */
@@ -75,6 +85,10 @@
   --success-bg: color-mix(in srgb, var(--success) 12%, white);
   --warning-bg: color-mix(in srgb, var(--warning) 12%, white);
   --info-bg: color-mix(in srgb, var(--info) 12%, white);
+
+  --gray-bg: var(--gray-bg-light);
+  --gray-bg-hover: var(--gray-bg-light-hover);
+  --gray-bg-active: var(--gray-bg-light-active);
 }
 
 /* TODO: support in the future */

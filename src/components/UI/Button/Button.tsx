@@ -22,6 +22,7 @@ const Button: FC<IButtonProps> = ({
       md: 'px-4 py-1.5 text-lg',
       lg: 'px-5 py-2 text-xl',
       xl: 'px-6 py-3 text-2xl',
+      'square-icon': 'p-1',
     };
 
     return sizeMapping[size] || sizeMapping.md;
@@ -51,6 +52,14 @@ const Button: FC<IButtonProps> = ({
     return roundedMapping[rounded] || roundedMapping.default;
   }, [rounded]);
 
+  const iconPositionMarginClass = useMemo(() => {
+    if (size === 'square-icon') {
+      return '';
+    }
+
+    return iconPosition === 'left' ? 'mr-2' : 'ml-2';
+  }, [iconPosition, size]);
+
   return (
     <button
       className={`outline-none hover:cursor-pointer transition ${buttonSize} ${buttonColor} ${buttonRounded} ${disabled || isLoading ? '!cursor-not-allowed opacity-50' : ''} ${className}`}
@@ -61,7 +70,7 @@ const Button: FC<IButtonProps> = ({
         {icon ? (
           <>
             {iconPosition === 'left' && icon}
-            <div className={`${iconPosition === 'right' ? 'mr-2' : 'ml-2'} ${buttonContentClassName}`}>
+            <div className={`${iconPositionMarginClass} ${buttonContentClassName}`}>
               {children}
             </div>
             {iconPosition === 'right' && icon}

@@ -11,6 +11,7 @@ import { githubLight } from '@fsegurai/codemirror-theme-github-light'; // When d
 import 'highlight.js/styles/github.css';
 import 'github-markdown-css/github-markdown-light.css'; // TODO: remove light theme and leave ordinary one, for supporting both themes.
 // Reference: https://github.com/sindresorhus/github-markdown-css
+
 import { useAppContext } from '../../contexts/AppProvider.tsx';
 import EditorMode from './EditorMode.tsx';
 import { EditorModeEnum } from '../../types/editor/editorEnums.ts';
@@ -20,7 +21,7 @@ import { EditorModeEnum } from '../../types/editor/editorEnums.ts';
 // Consider last published 2 years ago, meanwhile code mirror is actively being updated
 
 const Editor = () => {
-  const { content, setContent, editorMode } = useAppContext();
+  const { content, setContent, editorMode, selectedFile } = useAppContext();
 
   const [isEditorContentSetInitially, setIsEditorContentSetInitially] = useState(false);
 
@@ -60,7 +61,7 @@ const Editor = () => {
   }, []);
 
   useEffect(() => {
-    if (editorRef.current && content && !isEditorContentSetInitially) {
+    if (editorRef.current && content !== editorRef.current.state.doc.toString() && !isEditorContentSetInitially) {
       editorRef.current.dispatch({
         changes: {
           from: 0,
@@ -72,6 +73,12 @@ const Editor = () => {
       setIsEditorContentSetInitially(true);
     }
   }, [content, isEditorContentSetInitially]);
+
+  useEffect(() => {
+    console.log('selectedFile', selectedFile);
+
+    setIsEditorContentSetInitially(false);
+  }, [selectedFile]);
 
   return (
     <>
