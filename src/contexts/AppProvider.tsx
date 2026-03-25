@@ -45,7 +45,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const fetchFileContent = async () => {
       if (selectedFile) {
         try {
-          const fileContent = await invoke<string>('load_content_by_name', { file_name: selectedFile });
+          const fileContent = await invoke<string>('load_content_by_name', { fileName: selectedFile });
           setContent(fileContent);
         } catch (error) {
           console.error('Error fetching file content:', error);
@@ -61,7 +61,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     const saveContent = async () => {
       if (selectedFile) {
         try {
-          await invoke('save_content_by_name', { file_name: selectedFile, content });
+          await invoke('save_content_by_name', { fileName: selectedFile, content });
         } catch (error) {
           console.error('Failed to save content:', error);
         }
