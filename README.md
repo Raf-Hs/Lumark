@@ -33,7 +33,6 @@
 3. Follow the installation instructions based on your OS
 4. Open the app after installation
 
-> [!NOTE]
 > For detailed instructions check [resources/INSTALLATION.md](./resources/INSTALLATION.md) file.
 
 <!--
