@@ -54,7 +54,7 @@
 - [x] Mode selection (Edit, View, Split)
 - [ ] Support Tab and Shift+Tab (for tabbing and back-tabbing)
 - [ ] Support Key Shortcuts (Ctrl+B, Ctrl+I, Ctrl+U, etc.)
-- [ ] Multiple files selection
+- [x] Multiple files selection
 - [ ] Dark mode
 - [ ] Export to PDF
 - [ ] Support `mermaid` diagrams
