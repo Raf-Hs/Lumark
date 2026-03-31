@@ -1,2 +1,3 @@
 *.tsx linguist-vendored
+src/*.ts linguist-vendored
 *.js linguist-vendored
