@@ -1,4 +1,4 @@
-*.tsx linguist-vendored
-src/**/*.ts linguist-vendored
-*.js linguist-detectable
-*.mjs -linguist-detectable
+# *.tsx linguist-vendored
+# src/**/*.ts linguist-vendored
+# *.js linguist-detectable
+# *.mjs -linguist-detectable
