@@ -7,6 +7,11 @@
     <img src="https://img.shields.io/badge/platforms-Windows,%20Mac%20OS,%20Linux-green?style=flat-square" alt="Platforms">
     <img src="https://img.shields.io/github/license/AlbertArakelyan/lumark?style=flat-square" alt="License">
   </div>
+  <div align="center">
+    <img alt="GitHub Downloads" src="https://img.shields.io/github/downloads/AlbertArakelyan/Lumark/total.svg?style=flat-square">
+    <img alt="GitHub Commit Activity" src="https://img.shields.io/github/commit-activity/m/AlbertArakelyan/Lumark?style=flat-square">
+    <img alt="GitHub Closed Issues" src="https://img.shields.io/github/issues-closed/AlbertArakelyan/Lumark.svg?style=flat-square">
+  </div>
   <!-- <p>
     Lightweight cross-platform Markdown note-taking app
   </p> -->
