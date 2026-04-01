@@ -19,14 +19,14 @@
   <img src="./public/lumark-screenshot.gif" alt="Lumark Screenshot" width="800px">
 </div>
 
-## Features
+## <img height="18" src="https://octicons-col.vercel.app/sparkle/2f5bff"> Features
 
 - **Amazing**: Local-first, cross-platform, no data collection, split editor
 - **Elegant**: Minimalist design, two-column layout, distraction-free
 - **Efficient**: Tauri based, better performance than Electron based apps
 - **Simple**: Lightweight, single purpose
 
-## Installation & Setup
+## <img height="18" src="https://octicons-col.vercel.app/download/2f5bff"> Installation & Setup
 
 1. Download the latest installer package from [GitHub Releases](https://github.com/AlbertArakelyan/Lumark/releases/latest) based on your OS
 2. Open the downloaded file
@@ -48,7 +48,7 @@
 - AI-powered insights (coming soon)
 -->
 
-## Roadmap
+## <img height="18" src="https://octicons-col.vercel.app/project-roadmap/2f5bff"> Roadmap
 
 - [x] Linebreaks inside of the editor (togglable or as a deafult behavior)
 - [x] Mode selection (Edit, View, Split)
@@ -61,6 +61,6 @@
 
 
 
-## License
+## <img height="18" src="https://octicons-col.vercel.app/law/2f5bff"> License
 
 [MIT License](./LICENSE) - Feel free to use and contribute.
