@@ -68,4 +68,6 @@
 
 ## <img height="18" src="https://octicons-col.vercel.app/law/2f5bff"> License
 
-[MIT License](./LICENSE) - Feel free to use and contribute.
+Made with 💙
+
+Published under [MIT License](./LICENSE) - Feel free to use and contribute.
