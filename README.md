@@ -53,6 +53,10 @@
 - AI-powered insights (coming soon)
 -->
 
+## <img height="18" src="https://octicons-col.vercel.app/file/2f5bff"> Documentation
+
+[Markdown Syntax Guide](./resources/MARKDOWN_SYNTAX_GUIDE.md) - Complete syntax guide with all basic features
+
 ## <img height="18" src="https://octicons-col.vercel.app/project-roadmap/2f5bff"> Roadmap
 
 - [x] Linebreaks inside of the editor (togglable or as a deafult behavior)
