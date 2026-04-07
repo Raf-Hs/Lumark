@@ -64,6 +64,7 @@
 - [ ] Support Tab and Shift+Tab (for tabbing and back-tabbing)
 - [ ] Support Key Shortcuts (Ctrl+B, Ctrl+I, Ctrl+U, etc.)
 - [x] Multiple files selection
+- [ ] Support folders/workspaces
 - [ ] Dark mode
 - [ ] Export to PDF
 - [ ] Support `mermaid` diagrams
